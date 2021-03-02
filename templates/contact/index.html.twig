@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pengolincoin blog: contact{% endblock %}
+
+{% block body %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ asset('img/banner-4.png') }}');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>PengolinCoin Blog</h1>
+                        <span class="subheading">News & info</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row pb-5">
+            <div class="col-lg-8 col-md-10 mx-auto">
+
+                {% for msg in app.session.flashBag.get('successContact')  %}
+                    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+                        {{ msg }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+
+                <h2>Contact the PengolinCoin team...</h2>
+                <p>
+                    Any questions? Fill out this form and we'll get back to you ASAP!
+                </p>
+                {{ form_start(our_form) }}
+                    <div class="row pt-4">
+                        <div class="col">
+                            {{ form_row(our_form.name) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(our_form.email) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(our_form.message) }}
+                        </div>
+                    </div>
+                    <input type="submit" value="Send the message" class="btn btn-success mt-3 py-2 px-3">
+                    <input type="reset" value="Reset" class="btn btn-secondary mt-3 py-2 px-">
+
+                {{ form_end(our_form) }}
+
+            </div>
+        </div>
+        <hr>
+    </div>
+
+{% endblock %}

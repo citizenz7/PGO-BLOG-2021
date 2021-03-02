@@ -1,19 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="PengolinCoin's blog: news & info about PGO, a Secure and Fast Real-World POS Cryptocurrency">
+        <meta name="keywords" content="PengolinCoin, coin, PGO, currency, cryptocurrency, Bitcoin, Dash, Ethereum, ETH, BTC, blog, news, info, POS, stake, blockchain, chain, block, transactions, defi, ERC20">
+        <meta name="author" content="citizenz7">
+        <meta name="image" content="{{ asset('img/PGO_500x500.jpg') }}">
+
+        <title>{% block title %}PengolinCoin's Blog: news & info{% endblock %}</title>
+
+        <!-- Schema.org for Google -->
+        <meta itemprop="name" content="Pengolincoin: POS secure and fast real-world cryptocurrency">
+        <meta itemprop="description" content="Proof of Stake (PoS), open source, decentralized blockchain-based cryptocurrency focused on achieving fast transactions, an active and involved community, real-world utilization">
+        <meta itemprop="image" content="https://www.pengolincoin.xyz/pgo/img/PGO_500x500.png">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Pengolincoin: POS secure and fast real-world cryptocurrency">
+        <meta name="twitter:description" content="Proof of Stake (PoS), open source, decentralized blockchain-based cryptocurrency focused on achieving fast transactions, an active and involved community, real-world utilization">
+        <meta name="twitter:site" content="PengolinCoin">
+        <meta name="twitter:image:src" content="../img/PGO_500x500.png">
+
+        <!-- Open Graph general (Facebook, Pinterest) -->
+        <meta name="og:title" content="Pengolincoin: POS secure and fast real-world cryptocurrency">
+        <meta name="og:description" content="Proof of Stake (PoS), open source, decentralized blockchain-based cryptocurrency focused on achieving fast transactions, an active and involved community, real-world utilization">
+        <meta name="og:image" content="..//img/PGO_500x500.png">
+        <meta name="og:url" content="https://www.pengolincoin.xyz">
+        <meta name="og:site_name" content="pengolincoin.xyz">
+        <meta name="og:locale" content="en_US">
+        <meta name="og:type" content="website">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/assets/apple-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/assets/apple-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('img/assets/apple-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/assets/apple-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/assets/apple-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('img/assets/apple-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/assets/apple-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('img/assets/apple-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/assets/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('img/assets/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/assets/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/assets/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/assets/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('img/assets/manifest.json') }}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{ asset('img/assets/ms-icon-144x144.png') }}">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="mobile-web-app-capable" content="yes">
+
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+
+    </head>
+    <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('home') }}">
+                <img src="{{ asset('img/PGO_32x32.png') }}" alt="PGO" class="float-left mr-2">
+                PengolinCoin
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('category_index') }}">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('search') }}">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                    </li class="nav-item">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="navlink dropdown-toggle text-decoration-none" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-link"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://www.pengolincoin.xyz/pgo/" target="_blank">PGO website</a>
+                            <a class="dropdown-item" href="https://www.pengolincoin.xyz/wpgo/" target="_blank">wPGO website</a>
+                            <a class="dropdown-item" href="https://teespring.com/stores/pengolincoin-store" target="_blank">PGO Store</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="http://blockexplorer.pengolincoin.xyz" target="_blank">Block Explorer</a>
+                        </div>
+                    </li>
+                    {% if app.user %}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="navlink dropdown-toggle text-decoration-none" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bars"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('post_index') }}">Post index</a>
+                                <a class="dropdown-item" href="{{ path('category_index') }}">Category index</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{{ path('app_login') }}" class="navlink">Sign in</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block body %}{% endblock %}
+
+    {% block footer %}
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://discord.gg/XTk8u4w">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fab fa-discord fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://t.me/pengolincoin">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://twitter.com/PengolinC">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/PengolinCoin-105101314474751">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://github.com/pengolincoin">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://cryptorigvin.medium.com/">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.pengolincoin.xyz/">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fas fa-globe fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <span class="fa-stack fa-lg">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      <i class="fas fa-at fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="copyright text-muted">Copyright &copy; PengolinCoin 2021</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
         {% endblock %}
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+            <script src="{{ asset('js/clean-blog.min.js') }}"></script>
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
     </body>
 </html>

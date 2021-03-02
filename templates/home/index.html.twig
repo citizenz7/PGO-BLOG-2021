@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PengolinCoin's Blog: news & info{% endblock %}
+
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ asset('img/banner-4.png') }}');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>PengolinCoin Blog</h1>
+                        <span class="subheading">News & info</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-lg-10 col-md-10 mx-auto">
+                    <div class="post-preview">
+                        <a href="{{ path('post_show', {'slug': post.slug}) }}">
+                            <h2 class="post-title text-justify">
+                                {{ post.title }}
+                            </h2>
+                        </a>
+                        <p class="post-meta">Posted by {{ post.author }} in <a href="{{ path('category_show', {'slug': post.category.slug}) }}" class="text-warning text-decoration-none">{{ post.category }}</a> on {{ post.createdAt|format_datetime('full', 'short', '') }} | {{ post.views }} views</p>
+                        <p class="text-justify">
+                            {{ post.content | slice(0, 250) | raw }}...
+                        </p>
+                        <p class="text-right">
+                            <i class="fas fa-angle-double-right"></i> <a href="{{ path('post_show', {'slug': post.slug}) }}" class="text-decoration-none small">Read full article</a>
+                        </p>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+            </div>
+        <!-- Pagination -->
+        <div class="pagination justify-content-center pt-4">
+            {{ knp_pagination_render(posts) }}
+        </div>
+    </div>
+
+    <hr>
+{% endblock %}

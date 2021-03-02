@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PengolinCoin's Blog: {{ post.title }}{% endblock %}
+
+{% block body %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ post.image }}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h3><a href="{{ path('category_show', {'slug': post.category.slug}) }}" class="text-warning text-decoration-none">{{ post.category }}</a></h3>
+                        <h1>{{ post.title }}</h1>
+                        <!--<h2 class="subheading">Problems look mighty small from 150 miles up</h2>-->
+                        <span class="meta">Posted by <a href="#">{{ post.author }}</a> on {{ post.createdAt|format_datetime('full', 'short', '') }} | {{ post.views }} views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <p>
+                        {% if app.user %}
+                            {% if (app.user.username == post.author) or (is_granted('ROLE_ADMIN')) %}
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <a class="btn btn-warning me-2" href="{{ path('post_edit', {'id': post.id}) }}" title="Edit the post"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                        <td>
+                                            {{ include('post/_delete_form.html.twig') }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            {% endif %}
+                        {% endif %}
+                    </p>
+                    <p>
+                        {{ post.content | raw }}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+{% endblock %}
