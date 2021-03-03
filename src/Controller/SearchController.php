@@ -2,11 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Post;
-use App\Form\PostSearch;
-use App\Form\SearchPost;
+use App\Form\Model\SearchPost;
 use App\Form\SearchPostType;
-use App\Form\SearchThePost;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,10 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class SearchController
+ * @package App\Controller
+ */
 class SearchController extends AbstractController
 {
     /**
-     * @Route("/search", name="search", methods={"GET","POST"})
+     * @Route("/search", name="search", methods={"GET"})
      * @param Request $request
      * @param PostRepository $repo
      * @param PaginatorInterface $paginator
@@ -26,14 +27,16 @@ class SearchController extends AbstractController
     public function index(Request $request, PostRepository $repo, PaginatorInterface $paginator): Response
     {
         $searchPost = new SearchPost();
-        $form = $this->createForm(SearchPostType::class, $searchPost);
+        $form = $this->createForm(SearchPostType::class, $searchPost, [
+            'action' => $this->generateUrl('search'),
+            'method' => 'GET',
+        ]);
         $form->handleRequest($request);
 
         $data = $repo->findPosts();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $title = $form->getTitle();
-            $data = $repo->search($title);
+            $data = $repo->search($searchPost->getTitle());
         }
 
         // Paginate the results of the query
@@ -45,7 +48,7 @@ class SearchController extends AbstractController
 
         return $this->render('search/index.html.twig', [
             'pagination' => $pagination,
-            'search_form' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 }

@@ -2,13 +2,16 @@
 
 namespace App\Form;
 
-use App\Entity\Post;
+use App\Form\Model\SearchPost;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class SearchPostType
+ * @package App\Form
+ */
 class SearchPostType extends AbstractType
 {
     /**
@@ -18,7 +21,13 @@ class SearchPostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, [
+                'label' => 'Search is on the post title',
+                'attr' => [
+                    'id' => 'search-titre',
+                    'placeholder' => 'Enter a keyword',
+                ],
+            ])
         ;
     }
 
@@ -28,29 +37,8 @@ class SearchPostType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' =>Post::class
-        ]);
-    }
-}
-
-class SearchPost extends AbstractType
-{
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title', TextType::class)
-            ->add('Submit', SubmitType::class)
-        ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => SearchPost::class
+            'data_class' => SearchPost::class,
+            'csrf_protection' => false,
         ]);
     }
 }
