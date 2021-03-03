@@ -37,7 +37,7 @@ class SearchController extends AbstractController
         $pagination = $paginator->paginate(
             $donnees,
             $request->query->getInt('page', 1),
-            50
+            5
         );
 
         return $this->render('search/index.html.twig', [
