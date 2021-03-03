@@ -3,11 +3,32 @@
 {% block title %}Edit Category{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ asset('img/banner-4.png') }}');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>PengolinCoin Blog</h1>
+                        <span class="subheading">News & info</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row pb-5">
+            <div class="col-lg-8 col-md-10 mx-auto">
 
-    <a href="{{ path('category_index') }}">back to list</a>
+                <h2>Edit Category {{ category.title }}</h2>
 
-    {{ include('category/_delete_form.html.twig') }}
+                {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+
+            </div>
+        </div>
+    </div>
+    <hr>
 {% endblock %}

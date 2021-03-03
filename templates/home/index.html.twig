@@ -34,7 +34,7 @@
                             {{ post.content | slice(0, 250) | raw }}...
                         </p>
                         <p class="text-right">
-                            <i class="fas fa-angle-double-right"></i> <a href="{{ path('post_show', {'slug': post.slug}) }}" class="text-decoration-none small">Read full article</a>
+                            <i class="fas fa-angle-double-right mr-2"></i><a href="{{ path('post_show', {'slug': post.slug}) }}" class="text-decoration-none small">Read full article</a>
                         </p>
                     </div>
                     <hr>

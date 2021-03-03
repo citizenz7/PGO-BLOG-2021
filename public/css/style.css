@@ -183,7 +183,8 @@ img::-moz-selection {
 
 header.masthead {
     margin-bottom: 50px;
-    background: no-repeat center center;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: #868e96;
     background-attachment: scroll;
     position: relative;

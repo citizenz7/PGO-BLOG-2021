@@ -59,7 +59,7 @@ class Category
     }
 
     /**
-     * @return Collection|Post[]
+     * @return Collection
      */
     public function getPosts(): Collection
     {

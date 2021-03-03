@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Form\SearchPostType;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -13,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SearchController extends AbstractController
 {
     /**
-     * @Route("/search", name="search")
+     * @Route("/search", name="search", methods={"GET", "POST"})
      * @param Request $request
      * @param PostRepository $repo
      * @param PaginatorInterface $paginator
@@ -33,14 +34,14 @@ class SearchController extends AbstractController
         }
 
         // Paginate the results of the query
-        $posts = $paginator->paginate(
+        $pagination = $paginator->paginate(
             $donnees,
             $request->query->getInt('page', 1),
-            30
+            50
         );
 
         return $this->render('search/index.html.twig', [
-            'posts' => $posts,
+            'pagination' => $pagination,
             'searchForm' => $searchForm->createView()
         ]);
     }

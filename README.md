@@ -2,10 +2,10 @@
 ### Made with Symfony 5
 
 - Slug posts
-- slug categories
+- Slug categories
 - CKEditor
 - Elfinder (images upload)
-- knp_paginator
+- Knp_paginator
 - Stof_doctrine_extansions
 
 ### TO DO:

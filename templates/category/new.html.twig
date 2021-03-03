@@ -24,7 +24,6 @@
                 {% if is_granted('ROLE_ADMIN') %}
                     <h1>Create new Category</h1>
                     {{ include('category/_form.html.twig') }}
-                    <a href="{{ path('category_index') }}">back to list</a>
                 {% else %}
                     <h2 class="alert alert-danger p-5 text-center">You can't access to this page!</h2>
                 {% endif %}
