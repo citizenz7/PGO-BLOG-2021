@@ -25,12 +25,7 @@
                 <h2>Search for a post</h2>
                 <div class="form-group">
                     {{ form_start(searchForm) }}
-                        {{ form_row(searchForm.title, {'label': 'Search is on the post title', 'id': 'search-titre', 'attr': {'placeholder': 'Enter a keyword', 'class': 'form-control'}})
-                        }}
-                        <p>
-                            <button class="btn btn-success mt-3 py-2 px-3">Search</button>
-                            <button class="btn btn-secondary mt-3 py-2 px-3" type="reset">Reset</button>
-                        </p>
+                        {{ form_row(searchForm) }}
                     {{ form_end(searchForm) }}
                 </div>
 
