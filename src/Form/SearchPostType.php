@@ -18,6 +18,7 @@ class SearchPostType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
+            ->setMethod('GET')
         ;
     }
 

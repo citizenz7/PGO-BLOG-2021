@@ -20,6 +20,15 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    /**
+     * @return Query
+     */
+    public function findPosts(): Query
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb->getQuery();
+    }
+
     public function search($title): Query
     {
         return $this->createQueryBuilder('p')
@@ -29,14 +38,6 @@ class PostRepository extends ServiceEntityRepository
             //->execute();
     }
 
-    /**
-     * @return Query
-     */
-    public function findPosts(): Query
-    {
-        $qb = $this->createQueryBuilder('p');
-        return $qb->getQuery();
-    }
 
     // /**
     //  * @return Post[] Returns an array of Post objects

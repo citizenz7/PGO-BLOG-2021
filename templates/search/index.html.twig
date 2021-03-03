@@ -34,7 +34,7 @@
                     {{ form_end(searchForm) }}
                 </div>
 
-                {% if app.request.method == 'POST' %}
+                {#% if app.request.method == 'GET' %#}
                     <div id="result-search" class="mt-5">
                         {% if pagination | length == 0 %}
                             <h5>No result for your search <i class="fas fa-sad-tear"></i></h5>
@@ -57,7 +57,7 @@
                             </div>
                         {% endif %}
                     </div>
-                {% endif %}
+                {#% endif %#}
             </div>
         </div>
         <hr>
