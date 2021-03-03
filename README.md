@@ -6,7 +6,5 @@
 - CKEditor
 - Elfinder (images upload)
 - Knp_paginator
-- Stof_doctrine_extansions
+- Stof_doctrine_extensions
 
-### TO DO:
-- categories: CSS
