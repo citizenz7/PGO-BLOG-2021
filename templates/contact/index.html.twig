@@ -32,6 +32,11 @@
                             {{ form_row(our_form.message) }}
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(our_form.captcha, {'label' : 'Anti-spam', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
 
                     <button type="submit" class="btn btn-success mt-3 py-2 px-3">Send message</button>
                     <button type="reset" class="btn btn-secondary mt-3 py-2 px-">Reset</button>

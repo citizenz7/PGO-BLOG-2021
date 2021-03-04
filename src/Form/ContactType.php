@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -37,6 +38,11 @@ class ContactType extends AbstractType
                     'rows' => 8,
                     'require' => true,
                     'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('captcha', CaptchaType::class, [
+                'attr' => [
+                    'style' => 'width: 200px'
                 ]
             ])
         ;
