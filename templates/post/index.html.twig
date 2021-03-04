@@ -16,12 +16,12 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th width="60%">Title</th>
-                                <th>Created_at</th>
-                                <th>Author</th>
-                                <th>Views</th>
-                                <th width="18%">actions</th>
+                                <th style="width: 6%;">{{ knp_pagination_sortable(posts, 'Id', 'p.id') }}</th>
+                                <th>{{ knp_pagination_sortable(posts, 'Title', 'p.title') }}</th>
+                                <th style="width: 14%;">{{ knp_pagination_sortable(posts, 'Created at', 'p.created_at') }}</th>
+                                <th style="width: 14%;">{{ knp_pagination_sortable(posts, 'Author', 'p.author') }}</th>
+                                <th style="width: 9%;">{{ knp_pagination_sortable(posts, 'Views', 'p.views') }}</th>
+                                <th style="width: 16%;">actions</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>

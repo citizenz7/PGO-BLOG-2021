@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
-use App\Repository\PostRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,14 +17,15 @@ class PostController extends AbstractController
 {
     /**
      * @Route("/", name="post_index", methods={"GET"})
-     * @param PostRepository $postRepository
      * @param $paginator
      * @param $request
      * @return Response
      */
-    public function index(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $data = $this->getDoctrine()->getRepository(Post::class)->findBy([], ['created_at' => 'DESC']);
+        $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT p FROM App:Post p";
+        $data = $em->createQuery($dql);
 
         $posts = $paginator->paginate(
             $data,
