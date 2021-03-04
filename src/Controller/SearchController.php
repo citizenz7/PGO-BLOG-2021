@@ -31,6 +31,7 @@ class SearchController extends AbstractController
             'action' => $this->generateUrl('search'),
             'method' => 'GET',
         ]);
+
         $form->handleRequest($request);
 
         $data = $repo->findPosts();
