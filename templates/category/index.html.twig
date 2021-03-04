@@ -4,53 +4,38 @@
 
 {% block body %}
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('{{ asset('img/banner-4.png') }}');">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-md-10 mx-auto">
-                    <div class="site-heading">
-                        <h1>PengolinCoin Blog</h1>
-                        <span class="subheading">News & info</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    {{ include('_header.html.twig', {'title': 'News & info', 'image': 'img/banner-4.png'}) }}
 
     <!-- Main Content -->
     <div class="container-fluid">
         <div class="row pb-5">
             <div class="col-lg-8 col-md-10 mx-auto">
-                    <h1>Category index</h1>
-                    <table class="table">
-                        <tr>
-                            <th width="65%">Title</th>
-                            <th># posts</th>
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <th>actions</th>
-                                <th>Delete</th>
-                            {% endif %}
-                        </tr>
-                        {% for category in categories %}
-                            <tr>
-                                <td><a class="text-decoration-none" href="{{ path('category_show', {'slug': category.slug}) }}">{{ category.title }}</a></td>
-                                <td>{{ category.posts | length }}</td>
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    <td>
-                                        <a class="btn btn-sm btn-warning" href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-                                    </td>
-                                    <td>
-                                        {{ include('category/_delete_form.html.twig') }}
-                                    </td>
-                                {% endif %}
-                            </tr>
+                    <h2>Categories list</h2>
 
-                        {% else %}
-                            no records found
-                        {% endfor %}
+                        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+                            {% for category in categories %}
+                                    <div class="col my-2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <a class="text-decoration-none" href="{{ path('category_show', {'slug': category.slug}) }}">{{ category.title }}</a>
+                                                    <span class="badge bg-warning px-3 py-2">{{ category.posts | length }}</span>
+                                                </h5>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <p>
+                                                        <a class="btn btn-sm btn-warning" href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                                                        {{ include('category/_delete_form.html.twig') }}
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    </table>
+                            {% else %}
+                                no records found
+                            {% endfor %}
+                        </div>
+
                     {% if is_granted('ROLE_ADMIN') %}
                         <p class="pt-4">
                             <a class="btn btn-sm btn-success text-decoration-none" href="{{ path('category_new') }}">Create new category</a>

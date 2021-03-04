@@ -8,7 +8,7 @@ namespace App\Form\Model;
  */
 class SearchPost
 {
-    private $title;
+    private string $title;
 
     public function getTitle(): string
     {

@@ -3,69 +3,53 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('{{ asset('img/banner-4.png') }}');">
-    <div class="overlay"></div>
+    <!-- Page Header -->
+    {{ include('_header.html.twig', {'title': 'News & info', 'image': 'img/banner-4.png'}) }}
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 col-md-10 mx-auto">
-                <div class="site-heading">
-                    <h1>PengolinCoin Blog</h1>
-                    <span class="subheading">News & info</span>
-                </div>
+            <div class="col-lg-4 col-md-10 mx-auto">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label for="inputUsername">Username</label>
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    #}
+
+                    <button class="btn btn-success mt-4" type="submit">Sign in</button>
+                    <button class="btn btn-secondary mt-4" type="reset">Reset</button>
+                </form>
             </div>
         </div>
     </div>
-</header>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-10 mx-auto">
-            <form method="post">
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
-
-                {% if app.user %}
-                    <div class="mb-3">
-                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                    </div>
-                {% endif %}
-
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label for="inputUsername">Username</label>
-                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-                <label for="inputPassword">Password</label>
-                <input type="password" name="password" id="inputPassword" class="form-control" required>
-
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-                {#
-                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                    See https://symfony.com/doc/current/security/remember_me.html
-
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" name="_remember_me"> Remember me
-                        </label>
-                    </div>
-                #}
-
-                <button class="btn btn-primary mt-4" type="submit">
-                    Sign in
-                </button>
-                <button class="btn btn-secondary mt-4" type="reset">
-                    Reset
-                </button>
-            </form>
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col">
+                <hr>
+            </div>
         </div>
     </div>
-</div>
-<div class="container-fluid pt-5">
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-</div>
 {% endblock %}
