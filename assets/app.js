@@ -15,4 +15,4 @@ import $ from 'jquery';
 global.$ = global.jQuery = $;
 import 'popper.js';
 import 'bootstrap';
-import './clean-blog';
+import './clean-blog.js';
